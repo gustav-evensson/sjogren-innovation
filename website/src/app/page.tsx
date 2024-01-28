@@ -6,6 +6,7 @@ import Image from "next/image";
 import PageLoader from "@/components/PageLoader/PageLoader";
 import SectionHeader from "@/components/SectionHeader";
 import TextImageCard from "@/components/TextImageCard";
+import { getPayloadClient } from "@/get-payload";
 
 const infoData = [
   {
@@ -17,7 +18,6 @@ const infoData = [
     ],
     image: "/images/innovation.svg",
     alt: "innovation image",
-    reversed: false,
   },
   {
     word: "innovation",
@@ -28,7 +28,6 @@ const infoData = [
     ],
     image: "/images/innovation.svg",
     alt: "innovation image",
-    reversed: true,
   },
   {
     word: "innovation",
@@ -39,7 +38,6 @@ const infoData = [
     ],
     image: "/images/innovation.svg",
     alt: "innovation image",
-    reversed: false,
   },
 ]
 
@@ -57,6 +55,9 @@ const productsData = [
 ]
 
 export default function Home() {
+
+  const payload = getPayloadClient()
+
   return (
     <>
       <PageLoader>
@@ -84,7 +85,7 @@ export default function Home() {
               <SectionHeader title="om oss" subTitle="Sjögren innovation i 3 ord" />
               <div className="flex flex-col gap-12 lg:gap-28">
                 {infoData.map((info, i) => (
-                  <TextImageCard key={i} {...info} />
+                  <TextImageCard key={i} {...info} reversed={i % 2 != 0} />
                 ))}
               </div>
             </section>
@@ -93,7 +94,7 @@ export default function Home() {
               <SectionHeader title="tidigare produkter" subTitle="Tidigare produkter och projekt som kanske kan inspirera dig" />
               <div className="w-full flex flex-col gap-12 lg:gap-28">
                 {productsData.map((product, i) => (
-                  <TextImageCard key={i} {...product} />
+                  <TextImageCard key={i} {...product} reversed={i % 2 != 0} />
                 ))}
               </div>
             </section>
