@@ -1,28 +1,28 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { type Product } from "@/payload-types";
 
 export type CardData = {
-  product: Product;
+  word?: string;
+  title: string;
+  text: string[];
+  image: string;
   reversed?: boolean;
 };
 
-
-export default function ProductCard({ product, reversed }: CardData) {
-
-  const { name, description, image } = product
+export default function ProductCard({ word, title, text, image, reversed }: CardData) {
 
   return (
     <div className={cn("w-full flex flex-col items-center justify-between gap-8 lg:flex-row lg:justify-between", {
       "lg:flex-row-reverse": reversed,
     })}>
       <div className="flex-auto">
-        <h4 className="text-4xl font-raleway font-bold mb-2">{name}</h4>
+        {word && <h5 className="font-black opacity-50" >{word}</h5>}
+        <h4 className="text-4xl font-raleway font-bold mb-2">{title}</h4>
         <p className="text-text_secondary md:text-md lg:text-lg">
-          {description.map((t: any, i: number) => (
+          {text?.map((t: any, i: number) => (
             <>
               <span key={i}>{t.text}</span>
-              {i !== description.length - 1 && (
+              {i !== text.length - 1 && (
                 <>
                   <br />
                   <br />
@@ -33,7 +33,7 @@ export default function ProductCard({ product, reversed }: CardData) {
         </p>
       </div>
       <div className="relative w-full lg:w-[350px] lg:min-w-[350px] aspect-square place-items-center">
-        <Image src={image.url as string} fill className="text-text" alt="product image" />
+        <Image src={image} fill alt="product image" />
       </div>
     </div>
   );

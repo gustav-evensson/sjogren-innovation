@@ -1,9 +1,9 @@
 import MaxWidthProvider from "@/components/MaxWidthProvider";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/NavBar/NavBar";
 import PageLoader from "@/components/PageLoader/PageLoader";
 import SectionHeader from "@/components/SectionHeader";
 import CtaButton from "@/app/_components/CtaButton";
-import ProductProvider from "@/components/ProductProvider";
+import CardGroup from "@/components/CardGroup";
 
 const infoData = [
   {
@@ -71,15 +71,15 @@ export default function Home() {
         <div className="bg-background relative rounded-3xl -mt-6 lg:rounded-[32px] lg:-mt-8 py-12 sm:py-24 ">
           <MaxWidthProvider>
 
-            {/* <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
+            <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
               <SectionHeader title="om oss" subTitle="Sjögren innovation i 3 ord" />
               <CardGroup cardData={infoData} />
-            </section> */}
+            </section>
 
 
             <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
               <SectionHeader title="tidigare produkter" subTitle="Tidigare produkter och projekt som kanske kan inspirera dig" />
-              <ProductProvider />
+              
             </section>
 
           </MaxWidthProvider>

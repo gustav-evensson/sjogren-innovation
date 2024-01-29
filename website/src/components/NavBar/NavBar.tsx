@@ -5,7 +5,7 @@ import NavLogo from "./NavLogo";
 import { cn } from "@/lib/utils";
 
 import Link from "next/link";
-import MaxWidthProvider from "./MaxWidthProvider";
+import MaxWidthProvider from "../MaxWidthProvider";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);

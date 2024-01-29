@@ -23,7 +23,7 @@ export const Images: CollectionConfig = {
         position: 'centre',
       },
     ],
-    mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/svg"],
+    mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/svg+xml"],
   },
   fields: [
     {
