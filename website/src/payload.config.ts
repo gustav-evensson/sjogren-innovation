@@ -3,19 +3,21 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { slateEditor } from "@payloadcms/richtext-slate";
 import path from "path";
 import { buildConfig } from "payload/config";
+import { Products } from "./collections/products";
+import { Images } from "./collections/images";
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-  collections: [],
+  collections: [Products, Images],
   routes: {
-    admin: '/sell'
+    admin: '/admin'
   },
   admin: {
     bundler: webpackBundler(),
     meta: {
-      titleSuffix: '- Sjogren Innovation',
-      favicon: '/src/app/icon.png',
-      ogImage: '/public/openGraph/thumbnail.png',
+      titleSuffix: '- Sjögren Innovation',
+      favicon: '/favicon.ico',
+      ogImage: '/openGraph/thumbnail.png',
     }
   },
   rateLimit: {
