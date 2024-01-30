@@ -8,8 +8,6 @@ import Link from "next/link";
 import ContactForm from "./_components/ContactForm";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
-import NavBar from "@/components/NavBar/NavBar";
-import Footer from "@/components/Footer";
 
 const infoData = [
   {
