@@ -10,7 +10,10 @@ export const Images: CollectionConfig = {
     ],
   },
   admin: {
-    hidden: true
+    hidden: true,
+  },
+  access: {
+    read: () => true,
   },
   upload: {
     staticURL: '/images',
@@ -30,8 +33,9 @@ export const Images: CollectionConfig = {
       name: 'product',
       type: 'relationship',
       relationTo: 'products',
-      required: true,
+      required: false,
       hasMany: false,
+      hidden: true,
     }
   ]
 }

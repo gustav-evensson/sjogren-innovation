@@ -15,11 +15,18 @@ export const Products: CollectionConfig = {
   admin: {
     useAsTitle: "name",
   },
+  defaultSort: "sortNumber",
   fields: [
     {
       name: "name",
       label: "Name",
       type: "text",
+      required: true,
+    },
+    {
+      name: "sortNumber",
+      label: "Sort Number",
+      type: "number",
       required: true,
     },
     {

@@ -16,12 +16,12 @@ export default function ProductCard({ word, title, text, image, reversed }: Card
       "lg:flex-row-reverse": reversed,
     })}>
       <div className="flex-auto">
-        {word && <h5 className="font-black opacity-50" >{word}</h5>}
+        {word && <h5 className="font-medium opacity-30 uppercase" >{word}</h5>}
         <h4 className="text-4xl font-raleway font-bold mb-2">{title}</h4>
         <p className="text-text_secondary md:text-md lg:text-lg">
           {text?.map((t: any, i: number) => (
             <>
-              <span key={i}>{t.text}</span>
+              <span key={i}>{t}</span>
               {i !== text.length - 1 && (
                 <>
                   <br />
@@ -32,7 +32,7 @@ export default function ProductCard({ word, title, text, image, reversed }: Card
           ))}
         </p>
       </div>
-      <div className="relative w-full lg:w-[350px] lg:min-w-[350px] aspect-square place-items-center">
+      <div className="relative w-full lg:w-[350px] lg:min-w-[350px] overflow-hidden rounded-3xl aspect-square place-items-center">
         <Image src={image} fill alt="product image" />
       </div>
     </div>

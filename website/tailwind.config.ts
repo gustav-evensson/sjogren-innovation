@@ -16,13 +16,17 @@ const config: Config = {
         mw: '1300px'
       },
       backgroundImage: {
-        'hero-image': "url('/images/hero.svg')",
+        'hero-image': "url('/assets/hero.svg')",
       }
     },
     colors: {
+      success: '#75ED88',
+      error: '#FF6767',
       text: '#000000',
       text_secondary: '#424242',
       background: '#FFFFFF',
+      background_secondary: '#F5F5F5',
+      input: '#cccccc',
       primary: '#0D81E8',
       secondary: '#0A5CA4',
       third: '#06335C',

@@ -1,9 +1,13 @@
 import MaxWidthProvider from "@/components/MaxWidthProvider";
-import NavBar from "@/components/NavBar/NavBar";
 import PageLoader from "@/components/PageLoader/PageLoader";
 import SectionHeader from "@/components/SectionHeader";
 import CtaButton from "@/app/_components/CtaButton";
 import CardGroup from "@/components/CardGroup";
+import PayloadProducts from "@/components/PayloadProducts";
+import Link from "next/link";
+import ContactForm from "./_components/ContactForm";
+
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 const infoData = [
   {
@@ -13,42 +17,26 @@ const infoData = [
       'För mig handlar denna del om att skapa och tillverka nya eller bättre lösningar som i sin tur ger ett större värde och fyller syfte för individ, företag eller samhälle. En bra struktur för detta innehåller insiktsutveckling, idégenerering, idéutarbetande och experimentdesign.',
       'En majoritet av de bästa lösningsidéerna finns hos dig som stöter på dem i vardagen. Många visualiserar lösningar och sätt att överkomma detta, andra bara accepterar en begränsning. För dig som söker lösningar eller en form av prototyp till detta har kommit rätt.'
     ],
-    image: "/images/innovation.svg",
-    alt: "innovation image",
+    image: "/assets/innovation.svg",
   },
   {
-    word: "innovation",
-    title: "Vi arbetar med innovation",
+    word: "kvalitet",
+    title: "Kvalitet i varje steg",
     text: [
-      'För mig handlar denna del om att skapa och tillverka nya eller bättre lösningar som i sin tur ger ett större värde och fyller syfte för individ, företag eller samhälle. En bra struktur för detta innehåller insiktsutveckling, idégenerering, idéutarbetande och experimentdesign.',
-      'En majoritet av de bästa lösningsidéerna finns hos dig som stöter på dem i vardagen. Många visualiserar lösningar och sätt att överkomma detta, andra bara accepterar en begränsning. För dig som söker lösningar eller en form av prototyp till detta har kommit rätt.'
+      'Grunden till en bra produkt handlar om kvalitet, att eftersträva och nå en hög standard är en viktig del i processen. Utvecklandet av en prototyp eller en produkt med 3D-skrivning ger dig ett snabbt och kostnadseffektivt sätt att visualisera och testa dina lösningar.'
     ],
-    image: "/images/innovation.svg",
-    alt: "innovation image",
+    image: "/assets/quality.svg",
   },
   {
-    word: "innovation",
-    title: "Vi arbetar med innovation",
+    word: "service",
+    title: "Personlig service",
     text: [
-      'För mig handlar denna del om att skapa och tillverka nya eller bättre lösningar som i sin tur ger ett större värde och fyller syfte för individ, företag eller samhälle. En bra struktur för detta innehåller insiktsutveckling, idégenerering, idéutarbetande och experimentdesign.',
-      'En majoritet av de bästa lösningsidéerna finns hos dig som stöter på dem i vardagen. Många visualiserar lösningar och sätt att överkomma detta, andra bara accepterar en begränsning. För dig som söker lösningar eller en form av prototyp till detta har kommit rätt.'
+      'Grundidén är att jag vill skapa en professionell men också personlig känsla vid ett bemötande. Dagens marknad i mitt tycke är väldigt opersonligt, därav vill jag skapa en verksamhet som verkligen lägger vikt och energi på det personliga bemötandet.',
+      'Av min erfarenhet som kund hos många större firmor är att det inte är lika lätt att bolla idéer och tankar kring en produkt som det är hos en mindre verksamhet. Därav lägger jag stor vikt på det personliga bemötandet och vill så långt det går, hjälpa dig som kund och se till att din produkt eller idé når dina krav och målsättningar.',
+      'Jag svarar gärna på frågor och funderingar så tveka inte att höra av dig.'
     ],
-    image: "/images/innovation.svg",
-    alt: "innovation image",
+    image: "/assets/service.svg",
   },
-]
-
-const productsData = [
-  {
-    title: "Produkt 1",
-    text: [
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.',
-    ],
-    image: "/images/innovation.svg",
-    alt: "innovation image",
-  }
 ]
 
 export default function Home() {
@@ -57,18 +45,17 @@ export default function Home() {
     <>
       <PageLoader>
         <section className="bg-hero-image bg-left bg-cover min-h-[90vh] flex items-center justify-start">
-          <NavBar />
           <MaxWidthProvider>
 
             <div className="flex flex-col items-center sm:items-start">
               <h1 className="text-5xl text-center sm:text-left md:text-7xl font-extrabold t- w-full max-w-[650px] text-white mb-6">We make your imagination the only limit</h1>
-              <CtaButton>KONTAKTA OSS</CtaButton>
+              <CtaButton>kontakta oss</CtaButton>
             </div>
 
           </MaxWidthProvider>
         </section>
 
-        <div className="bg-background relative rounded-3xl -mt-6 lg:rounded-[32px] lg:-mt-8 py-12 sm:py-24 ">
+        <div className="bg-background relative rounded-3xl -mt-6 lg:rounded-[32px] lg:-mt-8 pt-12 sm:pt-24 ">
           <MaxWidthProvider>
 
             <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
@@ -76,10 +63,18 @@ export default function Home() {
               <CardGroup cardData={infoData} />
             </section>
 
-
             <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
               <SectionHeader title="tidigare produkter" subTitle="Tidigare produkter och projekt som kanske kan inspirera dig" />
-              
+              <PayloadProducts limit={4} />
+              <Link href="/products" className="text-xl group mt-12 transition-all duration-300 flex items-center gap-2 hover:gap-4">
+                Visa fler produkter
+                <ArrowRightIcon className="size-6 inline-block" />
+              </Link>
+            </section>
+
+            <section id="contact" className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
+              <SectionHeader title="kontakt" subTitle="Kontakta mig med dina bästa idéer så gör vi de till verklighet" />
+              <ContactForm />
             </section>
 
           </MaxWidthProvider>

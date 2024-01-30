@@ -16,7 +16,7 @@ export default buildConfig({
     bundler: webpackBundler(),
     meta: {
       titleSuffix: '- Sjögren Innovation',
-      favicon: '/favicon.ico',
+      favicon: '/icon.png',
       ogImage: '/openGraph/thumbnail.png',
     }
   },

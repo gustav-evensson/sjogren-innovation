@@ -10,6 +10,7 @@ const dev = process.env.NODE_ENV !== 'production';
 const start = async () => {
   const payload  = await getPayloadClient({
     initOptions: {
+      local: dev ? true : false,
       express: app,
       onInit: async (cms) => {
         cms.logger.info('Payload CMS is ready at: ' + cms.getAdminURL());
@@ -27,5 +28,9 @@ const start = async () => {
     });
   });
 };
+
+app.get('api/send-email', (req, res) => {
+  res.send('Hello World!');
+});
 
 start()

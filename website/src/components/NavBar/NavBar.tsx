@@ -3,14 +3,18 @@
 import { useEffect, useState } from "react";
 import NavLogo from "./NavLogo";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 import Link from "next/link";
 import MaxWidthProvider from "../MaxWidthProvider";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    console.log(pathname);
+    if(pathname !== '/') return setIsScrolled(true);
     window.onscroll = () => {
       if (window.scrollY === 0) {
         setIsScrolled(false);
@@ -18,7 +22,11 @@ export default function NavBar() {
         setIsScrolled(true);
       }
     };
-  }, []);
+
+    return () => {
+      window.onscroll = null;
+    };
+  }, [pathname]);
 
   return (
     <nav
