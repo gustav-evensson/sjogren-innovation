@@ -13,7 +13,6 @@ export default function NavBar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    console.log(pathname);
     if(pathname !== '/') return setIsScrolled(true);
     window.onscroll = () => {
       if (window.scrollY === 0) {

@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-background_secondary text-text py-8 sm:py-12">
       <MaxWidthProvider>
-        <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:items-start">
+        <div className="flex flex-col justify-between gap-12 sm:flex-row items-start">
           <div className="flex flex-col gap-12 md:flex-row">
             <div>
               <h5 className="font-bold text-lg">Sjögren Innovation</h5>
