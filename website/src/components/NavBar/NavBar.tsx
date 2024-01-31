@@ -52,15 +52,15 @@ export default function NavBar() {
             >
               PRODUKTER
             </Link>
-            <a
+            <Link
               className={cn("font-raleway font-light transition duration-200 border-b", {
                 "text-black border-transparent hover:border-black": isScrolled,
                 "text-white border-transparent hover:border-white": !isScrolled,
               })}
-              href="#contact"
+              href="/#contact"
             >
               KONTAKT
-            </a>
+            </Link>
           </div>
         </div>
       </MaxWidthProvider>
