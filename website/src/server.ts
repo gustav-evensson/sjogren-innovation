@@ -7,7 +7,6 @@ import path from 'path';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
-const dev = process.env.NODE_ENV !== 'production';
 
 const start = async () => {
 
@@ -38,7 +37,7 @@ const start = async () => {
   nextApp.prepare().then(() => {
     payload.logger.info('Next.js is ready!');
 
-    app.listen(PORT, () => {
+    app.listen(PORT, async () => {
       payload.logger.info('Server is ready at: ' + process.env.NEXT_PUBLIC_SERVER_URL);
     });
   });
