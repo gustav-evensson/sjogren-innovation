@@ -87,12 +87,12 @@ var getPayloadClient = function (_a) {
                     return [4 /*yield*/, cached.promise];
                 case 2:
                     _c.client = _d.sent();
-                    return [2 /*return*/, cached.client];
+                    return [3 /*break*/, 4];
                 case 3:
                     error_1 = _d.sent();
                     cached.promise = null;
                     throw error_1;
-                case 4: return [2 /*return*/];
+                case 4: return [2 /*return*/, cached.client];
             }
         });
     });

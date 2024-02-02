@@ -46,7 +46,6 @@ var build_1 = __importDefault(require("next/dist/build"));
 var path_1 = __importDefault(require("path"));
 var app = (0, express_1.default)();
 var PORT = Number(process.env.PORT) || 3000;
-var dev = process.env.NODE_ENV !== 'production';
 var start = function () { return __awaiter(void 0, void 0, void 0, function () {
     var payload;
     return __generator(this, function (_a) {
@@ -69,7 +68,7 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    payload.logger.info('Next.js is building fro production');
+                                    payload.logger.info('Next.js is built for production at: ' + process.env.NEXT_PUBLIC_SERVER_URL);
                                     // @ts-ignore
                                     return [4 /*yield*/, (0, build_1.default)(path_1.default.join(__dirname, '../'))];
                                 case 1:
@@ -85,9 +84,12 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                 app.use(function (req, res) { return (0, next_utils_1.nextHandler)(req, res); });
                 next_utils_1.nextApp.prepare().then(function () {
                     payload.logger.info('Next.js is ready!');
-                    app.listen(PORT, function () {
-                        payload.logger.info('Server is ready at: ' + process.env.NEXT_PUBLIC_SERVER_URL);
-                    });
+                    app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            payload.logger.info('Server is ready at: ' + process.env.NEXT_PUBLIC_SERVER_URL);
+                            return [2 /*return*/];
+                        });
+                    }); });
                 });
                 return [2 /*return*/];
         }
