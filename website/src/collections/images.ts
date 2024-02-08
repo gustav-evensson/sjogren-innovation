@@ -10,7 +10,7 @@ export const Images: CollectionConfig = {
     ],
   },
   admin: {
-    hidden: true,
+    hidden: false,
   },
   access: {
     read: () => true,
