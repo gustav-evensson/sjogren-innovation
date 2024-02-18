@@ -55,11 +55,18 @@ export const productsData = [
     images: ['/assets/stampelset/image1.png', '/assets/stampelset/image2.png', '/assets/stampelset/image3.png']
   },
   {
+    title: 'Stagfäste',
+    text: [
+      'En plastdetalj för en gräsklippare modell äldre. Har som syfte att hålla upp och leda två stag under maskinen. Utgått ur sortiment, en smidig och billigare lösning än att köpa en ny gräsklippare var att tillverka en ny plastbit med hjälp av den gamla hållaren som var sprucken i tre.',
+    ],
+    images: ['/assets/stagfaste/image1.png', '/assets/stagfaste/image2.png']
+  },
+  {
     title: 'Kombinerad vajerfäste och kickstop',
     text: [
       'Monteras och är en 1:1 kopia av den som ska sitta original. Ersätter svårtillgängliga reservdelar som inte tillverkas längre. Just denna gjordes till en Husqvarna Enduro Maskin där den originaldel som ska sitta där var trasig och sliten.'
     ],
-    images: ['/assets/vajerfaste/image1.png', '/assets/vajerfaste/image2.png', '/assets/vajerfaste/image3.png', '/assets/vajerfaste/image4.png']
+    images: ['/assets/vajerfaste/image1.png', '/assets/vajerfaste/image2.png']
   }
 ];
 
