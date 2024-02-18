@@ -1,113 +1,80 @@
-import Image from "next/image";
+import MaxWidthProvider from "@/components/MaxWidthProvider";
+import SectionHeader from "@/components/SectionHeader";
+import CtaButton from "@/components/CtaButton";
+import CardGroup from "@/components/CardGroup";
+import Link from "next/link";
+import ContactForm from "@/components/ContactForm";
+
+import { ArrowRightIcon } from "@radix-ui/react-icons";
+
+import { homeProductsData } from "@/lib/products";
+
+const infoData = [
+  {
+    word: "innovation",
+    title: "Vi arbetar med innovation",
+    text: [
+      "För mig handlar denna del om att skapa och tillverka nya eller bättre lösningar som i sin tur ger ett större värde och fyller syfte för individ, företag eller samhälle. En bra struktur för detta innehåller insiktsutveckling, idégenerering, idéutarbetande och experimentdesign.",
+      "En majoritet av de bästa lösningsidéerna finns hos dig som stöter på dem i vardagen. Många visualiserar lösningar och sätt att överkomma detta, andra bara accepterar en begränsning. För dig som söker lösningar eller en form av prototyp till detta har kommit rätt.",
+    ],
+    images: ["/assets/innovation.svg"],
+  },
+  {
+    word: "kvalitet",
+    title: "Kvalitet i varje steg",
+    text: [
+      "Grunden till en bra produkt handlar om kvalitet, att eftersträva och nå en hög standard är en viktig del i processen. Utvecklandet av en prototyp eller en produkt med 3D-skrivning ger dig ett snabbt och kostnadseffektivt sätt att visualisera och testa dina lösningar.",
+    ],
+    images: ["/assets/quality.svg"],
+  },
+  {
+    word: "service",
+    title: "Personlig service",
+    text: [
+      "Grundidén är att jag vill skapa en professionell men också personlig känsla vid ett bemötande. Dagens marknad i mitt tycke är väldigt opersonligt, därav vill jag skapa en verksamhet som verkligen lägger vikt och energi på det personliga bemötandet.",
+      "Av min erfarenhet som kund hos många större firmor är att det inte är lika lätt att bolla idéer och tankar kring en produkt som det är hos en mindre verksamhet. Därav lägger jag stor vikt på det personliga bemötandet och vill så långt det går, hjälpa dig som kund och se till att din produkt eller idé når dina krav och målsättningar.",
+      "Jag svarar gärna på frågor och funderingar så tveka inte att höra av dig.",
+    ],
+    images: ["/assets/service.svg"],
+  },
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <>
+      <section className="bg-hero-image bg-left bg-cover min-h-[90vh] flex items-center justify-start">
+        <MaxWidthProvider>
+          <div className="flex flex-col items-center sm:items-start">
+            <h1 className="text-5xl text-center sm:text-left md:text-7xl font-extrabold t- w-full max-w-[650px] text-white mb-6">
+              We make your imagination the only limit
+            </h1>
+            <CtaButton>kontakta oss</CtaButton>
+          </div>
+        </MaxWidthProvider>
+      </section>
+
+      <div className="bg-background relative rounded-3xl -mt-6 lg:rounded-[32px] lg:-mt-8 pt-12 sm:pt-24 ">
+        <MaxWidthProvider>
+          <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
+            <SectionHeader title="om oss" subTitle="Sjögren innovation i 3 ord" />
+            <CardGroup cardData={infoData} />
+          </section>
+
+          <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
+            <SectionHeader title="tidigare produkter" subTitle="Tidigare produkter och projekt som kanske kan inspirera dig" />
+            <CardGroup cardData={homeProductsData} />
+            <Link href="/products" className="text-xl group mt-12 transition-all duration-300 flex items-center gap-2 hover:gap-4">
+              Visa fler produkter
+              <ArrowRightIcon className="size-6 inline-block" />
+            </Link>
+          </section>
+
+          <section id="contact" className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
+            <SectionHeader title="kontakt" subTitle="Kontakta mig med dina bästa idéer så gör vi de till verklighet" />
+            <ContactForm />
+          </section>
+        </MaxWidthProvider>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </>
   );
 }

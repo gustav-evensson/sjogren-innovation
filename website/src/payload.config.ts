@@ -4,7 +4,7 @@ import { slateEditor } from "@payloadcms/richtext-slate";
 import path from "path";
 import { buildConfig } from "payload/config";
 import { Products } from "./collections/products";
-import { Images } from "./collections/images";1
+import { Images } from "./collections/images";
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',

@@ -1,11 +1,12 @@
 import CardGroup from "./CardGroup";
-import { getProducts } from '@/lib/Actions/products'
+import { getMongoProducts, getProducts } from '@/lib/Actions/products'
 import { type CardData } from "./ProductCard";
 
 export default async function PayloadProducts({ limit }: { limit?: number}) {
 
   // Get the products from the payload CMS
   const products = await getProducts(limit || undefined)
+  // const products = await getMongoProducts(limit || undefined)
 
   // Transform the products into the CardData type
   const cardData: CardData[] = products.map((product) => {

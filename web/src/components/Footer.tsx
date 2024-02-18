@@ -26,9 +26,6 @@ export default function Footer() {
               <Link className="w-fit border-b border-transparent transition hover:border-text" href="/products">
                 Produkter
               </Link>
-              <Link className="w-fit border-b border-transparent transition hover:border-text" href="/admin">
-                Admin dashboard
-              </Link>
             </div>
           </div>
           <div>

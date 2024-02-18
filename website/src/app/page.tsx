@@ -1,5 +1,4 @@
 import MaxWidthProvider from "@/components/MaxWidthProvider";
-import PageLoader from "@/components/PageLoader/PageLoader";
 import SectionHeader from "@/components/SectionHeader";
 import CtaButton from "@/app/_components/CtaButton";
 import CardGroup from "@/components/CardGroup";

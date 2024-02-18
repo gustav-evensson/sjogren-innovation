@@ -1,0 +1,39 @@
+.loader-container{
+  --fillStroke-duration: 900ms;
+  --stroke-offset: 100;
+  animation: fadeOut 500ms 3300ms forwards;
+}
+
+.logo{
+  animation: fadeOut 500ms 2800ms forwards;
+}
+
+.logo-rect{
+  stroke-dasharray: var(--stroke-offset);
+  animation: fillStroke var(--fillStroke-duration) forwards linear;
+}
+
+.logo-s{
+  opacity: 0;
+  stroke-dasharray: var(--stroke-offset);
+  stroke-dashoffset: var(--stroke-offset);
+  animation: fillStroke var(--fillStroke-duration) 1300ms forwards linear;
+}
+
+@keyframes fillStroke {
+  from{
+    opacity: 1;
+    stroke-dashoffset: var(--stroke-offset);
+  }
+  to{
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeOut {
+  to{
+    opacity: 0;
+    pointer-events: none;
+  }
+}

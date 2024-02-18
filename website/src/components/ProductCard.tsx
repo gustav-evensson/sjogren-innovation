@@ -1,3 +1,5 @@
+"use client"
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -10,6 +12,8 @@ export type CardData = {
 };
 
 export default function ProductCard({ word, title, text, image, reversed }: CardData) {
+
+  console.log("ProductCard: ", { word, title, text, image, reversed })
 
   return (
     <div className={cn("w-full flex flex-col items-center justify-between gap-8 lg:flex-row lg:justify-between", {
