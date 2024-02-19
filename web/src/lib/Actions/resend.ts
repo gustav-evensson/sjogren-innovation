@@ -26,6 +26,12 @@ export async function sendEmail(email: string, name: string, msg:string): Promis
       `,
     });
     console.log(res);
+
+    if(res.error) return{
+      ok: false,
+      message: "Något gick fel, testa att skicka ett mail."
+    }
+
     return {
       ok: true,
       message: "Tack för ditt meddelande!",
