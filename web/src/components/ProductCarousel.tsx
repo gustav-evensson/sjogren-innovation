@@ -3,9 +3,6 @@ import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export default function ProductCarousel({ images }: { images: string[] }) {
-
-  console.log("carousel");
-
   return (
     <Carousel className="w-full h-full">
       <CarouselContent>

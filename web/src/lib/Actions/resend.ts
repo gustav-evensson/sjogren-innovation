@@ -17,7 +17,7 @@ export async function sendEmail(email: string, name: string, msg:string): Promis
   try{
     const res = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: 'evenssongustav@gmail.com',
+      to: process.env.TO_EMAIL!,
       subject: `Meddelande från ${name}`,
       html: `
       <strong>Meddelande: </strong>
