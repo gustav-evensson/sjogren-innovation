@@ -15,9 +15,9 @@ export async function sendEmail(email: string, name: string, msg:string): Promis
   if(!email.match(MAIL_FORMAT)) return { ok: false, message: "Invalid email format"}
 
   try{
-    resend.emails.send({
+    const res = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: 'k.e.sjogren@outlook.com',
+      to: 'evenssongustav@gmail.com',
       subject: `Meddelande från ${name}`,
       html: `
       <strong>Meddelande: </strong>
@@ -25,6 +25,7 @@ export async function sendEmail(email: string, name: string, msg:string): Promis
       <p><strong>Email: </strong> ${email}</p>
       `,
     });
+    console.log(res);
     return {
       ok: true,
       message: "Tack för ditt meddelande!",
