@@ -16,8 +16,8 @@ const getProductData = async () => {
 };
 
 export default async function Products() {
-  // const products = await getProductData();
-  const products = null;
+  const products = await getProductData();
+  // const products = null;
 
   return (
     <MaxWidthProvider>

@@ -55,8 +55,8 @@ const getProductData = async () => {
 
 export default async function Home() {
 
-  // const products = await getProductData();
-  const products = null
+  const products = await getProductData();
+  // const products = null
 
   return (
     <>
