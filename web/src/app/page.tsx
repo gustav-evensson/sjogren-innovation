@@ -41,11 +41,16 @@ const infoData = [
 ];
 
 const getProductData = async () => {
-  const data = await fetch(process.env.HOST_URL + "/api/content/getProducts?limit=3", { next: { revalidate: 1 } })
-    .then((res) => res.json())
-    .catch((error) => console.error("Error:", error));
-  
-  return data?.products;
+  try {
+    const data = await fetch(process.env.HOST_URL + "/api/content/getProducts?limit=3", { next: { revalidate: 10 } })
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error));
+    
+    return data?.products;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
 }
 
 export default async function Home() {

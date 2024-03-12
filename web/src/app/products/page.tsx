@@ -3,15 +3,19 @@ import SectionHeader from "@/components/SectionHeader";
 import CardGroup from "@/components/ProductCardGroup";
 
 const getProductData = async () => {
-  const data = await fetch(process.env.HOST_URL + "/api/content/getProducts", { next: { revalidate: 10 } })
-    .then((res) => res.json())
-    .catch((error) => console.error("Error:", error));
-  
-  return data?.products;
-}
+  try {
+    const data = await fetch(process.env.HOST_URL + "/api/content/getProducts", { next: { revalidate: 10 } })
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error));
+
+    return data?.products;
+  } catch (error) {
+    console.error("Error:", error);
+    return null;
+  }
+};
 
 export default async function Products() {
-
   const products = await getProductData();
 
   return (
