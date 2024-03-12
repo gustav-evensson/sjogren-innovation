@@ -1,13 +1,14 @@
 import MaxWidthProvider from "@/components/MaxWidthProvider";
 import SectionHeader from "@/components/SectionHeader";
 import CtaButton from "@/components/CtaButton";
-import CardGroup from "@/components/CardGroup";
+import CardGroup from "@/components/ProductCardGroup";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 import { homeProductsData } from "@/lib/products";
+import InfoCardGroup from "@/components/InfoCardGroup";
 
 const infoData = [
   {
@@ -39,7 +40,18 @@ const infoData = [
   },
 ];
 
-export default function Home() {
+const getProductData = async () => {
+  const data = await fetch(process.env.HOST_URL + "/api/content/getProducts?limit=3", { next: { revalidate: 1 } })
+    .then((res) => res.json())
+    .catch((error) => console.error("Error:", error));
+  
+  return data?.products;
+}
+
+export default async function Home() {
+
+  const products = await getProductData();
+
   return (
     <>
       <section className="bg-hero-image bg-left bg-cover min-h-[90vh] flex items-center justify-start">
@@ -57,12 +69,16 @@ export default function Home() {
         <MaxWidthProvider>
           <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
             <SectionHeader title="om oss" subTitle="Sjögren innovation i 3 ord" />
-            <CardGroup cardData={infoData} />
+            <InfoCardGroup cardData={infoData} />
           </section>
 
           <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
             <SectionHeader title="tidigare produkter" subTitle="Tidigare produkter och projekt som kanske kan inspirera dig" />
-            <CardGroup cardData={homeProductsData} />
+            {products ? (
+              <CardGroup cardData={products} />
+            ) : (
+              <p className="text-center text-text_secondary">Laddar...</p>
+            )}
             <Link href="/products" className="text-xl group mt-12 transition-all duration-300 flex items-center gap-2 hover:gap-4">
               Visa fler produkter
               <ArrowRightIcon className="size-6 inline-block" />

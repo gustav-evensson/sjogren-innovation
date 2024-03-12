@@ -7,12 +7,12 @@ import ProductCarousel from "./ProductCarousel";
 export type CardData = {
   word?: string;
   title: string;
-  text: any[];
+  text: string[];
   images: string[];
   reversed?: boolean;
 };
 
-export default function ProductCard({ word, title, text, images, reversed }: CardData) {
+export default function InfoCard({ word, title, text, images, reversed }: CardData) {
   return (
     <div
       className={cn("w-full flex flex-col items-center justify-between gap-8 lg:flex-row lg:justify-between", {
@@ -25,7 +25,7 @@ export default function ProductCard({ word, title, text, images, reversed }: Car
         <p className="text-text_secondary md:text-md lg:text-lg">
           {text?.map((t: any, i: number) => (
             <>
-              <span key={i}>{t.content[0].value}</span>
+              <span key={i}>{t}</span>
               {i !== text.length - 1 && (
                 <>
                   <br />

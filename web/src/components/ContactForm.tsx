@@ -17,7 +17,15 @@ export default function ContactForm() {
   const onSubmit = (e: any) => {
     e.preventDefault();
 
-    if (name.length === 0 || email.length === 0 || message.length === 0) return;
+    if (name.length === 0 || email.length === 0 || message.length === 0) {
+      setAlertMessage("Du måste fylla i alla fält");
+      setAlert("error");
+      setTimeout(() => {
+        setAlert("none");
+      }, 5000);
+      return;
+    
+    } ;
 
     setLoading(true);
 
@@ -66,7 +74,7 @@ export default function ContactForm() {
         <button
           type="submit"
           className={cn("w-full sm:w-[150px] h-12 flex items-center justify-center cursor-pointer bg-primary text-white py-3 px-9 rounded-lg transition duration-300", {
-            "opacity-50 cursor-not-allowed": name.length === 0 || email.length === 0 || message.length === 0 || loading === true,
+            "opacity-50 cursor-not-allowed": loading === true,
           })}
         >
           {!loading ? 'Skicka' : <CubeIcon className="animate-spin" />}

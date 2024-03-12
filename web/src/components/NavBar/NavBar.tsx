@@ -29,8 +29,8 @@ export default function NavBar() {
 
   return (
     <nav
-      className={cn("w-full fixed top-0 left-0 transition-all duration-300 z-50", {
-        "bg-[#ffffffdd] backdrop-blur-md": isScrolled,
+      className={cn("w-full fixed top-0 left-0 transition-all border-b border-b-transparent duration-300 z-50", {
+        "bg-[#ffffffdd] backdrop-blur-md border-b-slate-200": isScrolled,
         "bg-transparent": !isScrolled,
       })}
     >
