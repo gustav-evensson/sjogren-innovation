@@ -29,8 +29,5 @@ export async function GET(request: NextRequest) {
       order: ['fields.sortNumber']
     });
 
-  console.log(res.items)
-  console.log("IMAGES: ", res.items[0].fields.image[0])
-
   return NextResponse.json({ products: res.items });
 }
