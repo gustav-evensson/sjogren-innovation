@@ -16,13 +16,14 @@ const getProductData = async () => {
 };
 
 export default async function Products() {
-  const products = await getProductData();
+  // const products = await getProductData();
+  const products = null;
 
   return (
     <MaxWidthProvider>
       <section className="flex flex-col items-center gap-12 mt-24 mb-16 sm:mb-24">
         <SectionHeader title="Tidigare produkter" subTitle="Tidigare produkter och projekt som kanske kan inspirera dig" />
-        <CardGroup cardData={products} />
+        {products ? <CardGroup cardData={products} /> : <p className="text-center text-text_secondary">Laddar...</p>}
       </section>
     </MaxWidthProvider>
   );
