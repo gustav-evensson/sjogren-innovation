@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { sendEmail } from "@/lib/Actions/resend";
 import { useState } from "react";
 import { Cross1Icon, CubeIcon } from "@radix-ui/react-icons";
+import FadeDiv from "./animations/FadeDiv";
 
 export default function ContactForm() {
   const [alert, setAlert] = useState<string>("none");
@@ -24,8 +25,7 @@ export default function ContactForm() {
         setAlert("none");
       }, 5000);
       return;
-    
-    } ;
+    }
 
     setLoading(true);
 
@@ -51,34 +51,45 @@ export default function ContactForm() {
   return (
     <>
       <form className="w-full flex flex-col gap-4" onSubmit={onSubmit}>
-        <input
-          className="w-full border border-input transition focus:border-text outline-none p-4 rounded-lg"
-          type="text"
-          placeholder="Namn"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          className="w-full border border-input transition focus:border-text outline-none p-4 rounded-lg"
-          type="email"
-          placeholder="E-post"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <textarea
-          className="w-full border border-input transition focus:border-text outline-none p-4 rounded-lg min-h-[400px] resize-none"
-          placeholder="Meddelande"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button
-          type="submit"
-          className={cn("w-full sm:w-[150px] h-12 flex items-center justify-center cursor-pointer bg-primary text-white py-3 px-9 rounded-lg transition duration-300", {
-            "opacity-50 cursor-not-allowed": loading === true,
-          })}
-        >
-          {!loading ? 'Skicka' : <CubeIcon className="animate-spin" />}
-        </button>
+        <FadeDiv aos className="w-full">
+          <input
+            className="w-full border border-input transition focus:border-text outline-none p-4 rounded-lg"
+            type="text"
+            placeholder="Namn"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </FadeDiv>
+        <FadeDiv aos className="w-full">
+          <input
+            className="w-full border border-input transition focus:border-text outline-none p-4 rounded-lg"
+            type="email"
+            placeholder="E-post"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </FadeDiv>
+        <FadeDiv aos className="w-full">
+          <textarea
+            className="w-full border border-input transition focus:border-text outline-none p-4 rounded-lg min-h-[400px] resize-none"
+            placeholder="Meddelande"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+        </FadeDiv>
+        <FadeDiv aos className="w-full">
+          <button
+            type="submit"
+            className={cn(
+              "w-full sm:w-[150px] h-12 flex items-center justify-center cursor-pointer bg-primary text-white py-3 px-9 rounded-lg transition duration-300",
+              {
+                "opacity-50 cursor-not-allowed": loading === true,
+              }
+            )}
+          >
+            {!loading ? "Skicka" : <CubeIcon className="animate-spin" />}
+          </button>
+        </FadeDiv>
       </form>
       <div
         className={cn(

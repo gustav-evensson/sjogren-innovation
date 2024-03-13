@@ -9,6 +9,9 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 import { homeProductsData } from "@/lib/products";
 import InfoCardGroup from "@/components/InfoCardGroup";
+import StaggerText from "@/components/animations/StaggerText";
+import FadeDiv from "@/components/animations/FadeDiv";
+import SlideDiv from "@/components/animations/SlideDiv";
 
 const infoData = [
   {
@@ -45,16 +48,15 @@ const getProductData = async () => {
     const data = await fetch(process.env.HOST_URL + "/api/content/getProducts?limit=3", { next: { revalidate: 10 } })
       .then((res) => res.json())
       .catch((error) => console.error("Error:", error));
-    
+
     return data?.products;
   } catch (error) {
     console.error("Error:", error);
     return null;
   }
-}
+};
 
 export default async function Home() {
-
   const products = await getProductData();
   // const products = null
 
@@ -64,9 +66,11 @@ export default async function Home() {
         <MaxWidthProvider>
           <div className="flex flex-col items-center sm:items-start">
             <h1 className="text-5xl text-center sm:text-left md:text-7xl font-extrabold t- w-full max-w-[650px] text-white mb-6">
-              We make your imagination the only limit
+              <StaggerText>We make your imagination the only limit</StaggerText>
             </h1>
-            <CtaButton>kontakta oss</CtaButton>
+            <SlideDiv distance={10} direction="up" aos delay={0.3}>
+              <CtaButton>kontakta oss</CtaButton>
+            </SlideDiv>
           </div>
         </MaxWidthProvider>
       </section>
@@ -80,15 +84,13 @@ export default async function Home() {
 
           <section className="flex flex-col items-center gap-12 mb-16 sm:mb-24">
             <SectionHeader title="tidigare produkter" subTitle="Tidigare produkter och projekt som kanske kan inspirera dig" />
-            {products ? (
-              <CardGroup cardData={products} />
-            ) : (
-              <p className="text-center text-text_secondary">Laddar...</p>
-            )}
-            <Link href="/products" className="text-xl group mt-12 transition-all duration-300 flex items-center gap-2 hover:gap-4">
-              Visa fler produkter
-              <ArrowRightIcon className="size-6 inline-block" />
-            </Link>
+            {products ? <CardGroup cardData={products} /> : <p className="text-center text-text_secondary">Laddar...</p>}
+            <FadeDiv aos>
+              <Link href="/products" className="text-xl group mt-12 transition-all duration-300 flex items-center gap-2 hover:gap-4">
+                Visa fler produkter
+                <ArrowRightIcon className="size-6 inline-block" />
+              </Link>
+            </FadeDiv>
           </section>
 
           <section id="contact" className="flex flex-col items-center gap-12 mb-16 sm:mb-24">

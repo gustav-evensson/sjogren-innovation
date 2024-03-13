@@ -7,13 +7,14 @@ import { usePathname } from "next/navigation";
 
 import Link from "next/link";
 import MaxWidthProvider from "../MaxWidthProvider";
+import SlideDiv from "../animations/SlideDiv";
 
 export default function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    if(pathname !== '/') return setIsScrolled(true);
+    if (pathname !== "/") return setIsScrolled(true);
     window.onscroll = () => {
       if (window.scrollY === 0) {
         setIsScrolled(false);
@@ -36,9 +37,9 @@ export default function NavBar() {
     >
       <MaxWidthProvider>
         <div
-          className={cn('w-full flex items-center justify-between transition-all duration-300' , {
-            'py-4': isScrolled,
-            'py-8': !isScrolled,
+          className={cn("w-full flex items-center justify-between transition-all duration-300", {
+            "py-4": isScrolled,
+            "py-8": !isScrolled,
           })}
         >
           <NavLogo isScrolled={isScrolled} />
