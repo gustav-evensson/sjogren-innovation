@@ -66,7 +66,7 @@ export default async function Home() {
         <MaxWidthProvider>
           <div className="flex flex-col items-center sm:items-start">
             <h1 className="text-5xl text-center sm:text-left md:text-7xl font-extrabold t- w-full max-w-[650px] text-white mb-6">
-              <StaggerText>We make your imagination the only limit</StaggerText>
+              <StaggerText>Design And 3D Printing On Demand</StaggerText>
             </h1>
             <SlideDiv distance={10} direction="up" aos delay={0.3}>
               <CtaButton>kontakta oss</CtaButton>
